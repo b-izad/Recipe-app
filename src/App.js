@@ -49,12 +49,23 @@ console.log(recipes)
       
     </form>
     <div className="recipe-container">
-  {recipes.map(recipe => (
-    <div className="recipess">
-      <Recipe title={recipe.title} img={recipe.image} serving={recipe.servings} time = {recipe.readyInMinutes} source={recipe.sourceUrl}/>
-    </div>
-  ))}
+  {recipes.length > 0 ? (
+    recipes.map((recipe, index) => (
+      <div className="recipess" key={index}>
+        <Recipe
+          title={recipe.title}
+          img={recipe.image}
+          serving={recipe.servings}
+          time={recipe.readyInMinutes}
+          source={recipe.sourceUrl}
+        />
+      </div>
+    ))
+  ) : (
+    <p className="Error-message">OOPS! We did not find any recipes that includes your searched term! Please try a different search term! </p>
+  )}
 </div>
+
 <Footer />
     </div>
   );
